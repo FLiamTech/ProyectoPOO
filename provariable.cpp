@@ -6,8 +6,8 @@ proVariable::proVariable()
 
 }
 
-proVariable::proVariable(string SKU, string nombre, string descripcion, float precioVenta, float precioCompra, int numVariacion) :
-    Modelo(SKU, nombre, descripcion, precioVenta, precioCompra), numVariacion(numVariacion)
+proVariable::proVariable(string SKU, string nombre, string descripcion, float precioVenta, float precioCompra, int numVariacion, int unidades) :
+    Modelo(SKU, nombre, descripcion, precioVenta, precioCompra, unidades), numVariacion(numVariacion)
 {
 
 }
@@ -20,6 +20,7 @@ void proVariable::ingresoPVariables()
     float precioVenta;
     float precioCompra;
     int numeroVariaciones;
+    int unidades;
     cout<<"Ingrese el SKU: ";
     cin>>SKU;
     cout<<"Ingrese el nombre: ";
@@ -32,7 +33,15 @@ void proVariable::ingresoPVariables()
     cin>>precioCompra;
     cout<<"Numero de variaciones: ";
     cin>>numeroVariaciones;
-    Modelo *nuevoProducto = new Modelo(SKU, nombre, descripcion, precioVenta, precioCompra);
+    cout<<"Unidades: ";
+    cin>>unidades;
+    setSKU(SKU);
+    setNombre(nombre);
+    setDescripcion(descripcion);
+    setPrecioVenta(precioVenta);
+    setPrecioCompra(precioCompra);
+    setUnidades(unidades);
+    Modelo *nuevoProducto = new Modelo(SKU, nombre, descripcion, precioVenta, precioCompra, unidades);
     productos.push_back(nuevoProducto);
     string edicion;
     float nuevoCosto;

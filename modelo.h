@@ -15,17 +15,20 @@ private:
     string descripcion;
     float precioVenta;
     float precioCompra;
+    int unidades;
     vector<pair<string, pair<float, float>>> ediciones;
 protected:
     string SKU;
 public:
     Modelo();
-    Modelo(string SKU, string nombre, string descripcion, float precioVenta, float precioCompra);
+    Modelo(string SKU, string nombre, string descripcion, float precioVenta, float precioCompra, int unidades);
     void setSKU(string SKU);
     void setNombre(string nombre);
     void setDescripcion(string descripcion);
     void setPrecioVenta(float precioVenta);
     void setPrecioCompra(float precioCompra);
+    void setUnidades(int unidades);
+    int getUnidades();
     string getSKU();
     string getNombre();
     string getDescripcion();
@@ -33,6 +36,7 @@ public:
     float getPrecioCompra();
     void agregarEdicion(string edicion, float nuevoPrecio, float nuevoCosto);
     string imprimir(bool mostrarEdicion);
+    virtual ~Modelo();
 };
 
 #endif // MODELO_H

@@ -12,7 +12,7 @@ private:
     float nuevoPrecio;
 public:
     proVariable();
-    proVariable(string SKU, string nombre, string descripcion, float precioVenta, float precioCompra, int numVariacion);
+    proVariable(string SKU, string nombre, string descripcion, float precioVenta, float precioCompra, int numVariacion, int unidades);
     void ingresoPVariables();
     void imprimir();
 };

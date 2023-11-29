@@ -2,11 +2,12 @@
 
 Modelo::Modelo()
 {}
-Modelo::Modelo(string SKU, string nombre, string descripcion, float precioVenta, float precioCompra) :
+Modelo::Modelo(string SKU, string nombre, string descripcion, float precioVenta, float precioCompra, int unidades) :
     nombre(nombre),
     descripcion(descripcion),
     precioVenta(precioVenta),
-    precioCompra(precioCompra)
+    precioCompra(precioCompra),
+    unidades(unidades)
 {
     this->SKU = SKU;
 }
@@ -50,6 +51,16 @@ void Modelo::setPrecioCompra(float precioCompra)
 {
     this->precioCompra = precioCompra;
 }
+
+void Modelo::setUnidades(int unidades)
+{
+    this->unidades = unidades;
+}
+
+int Modelo::getUnidades()
+{
+    return unidades;
+}
 void Modelo::agregarEdicion(string edicion, float nuevoPrecio, float nuevoCosto)
 {
     ediciones.push_back(make_pair(edicion, make_pair(nuevoPrecio, nuevoCosto)));
@@ -61,7 +72,8 @@ string Modelo::imprimir(bool mostrarEdicion)
             + "Nombre: " + nombre + "\n"
             + "Descripcion: " + descripcion + "\n"
             + "Precio de venta: " + to_string(precioVenta) + "\n"
-            + "Precio de compra: " + to_string(precioCompra) + "\n";
+            + "Precio de compra: " + to_string(precioCompra) + "\n"
+            + "Unidades: " + to_string(unidades) + "\n";
     if(mostrarEdicion)
     {
         for (const auto& edicion : ediciones)
@@ -72,4 +84,9 @@ string Modelo::imprimir(bool mostrarEdicion)
         }
     }
     return datos;
+}
+
+Modelo::~Modelo()
+{
+
 }

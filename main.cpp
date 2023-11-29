@@ -27,9 +27,7 @@ int main() {
     proVariable PV("SK1231", "Jack Daniels", "Wisky", 120, 20, 3);
     PV.ingresoPVariables();
     PV.imprimir();*/
-    Interfaz init;
-    init.agregarProducto();
-    init.imprimir();
+    cout<<"a";
 
     return 0;
 }
