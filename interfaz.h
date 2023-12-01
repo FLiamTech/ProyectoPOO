@@ -12,6 +12,8 @@ public:
     void mostrarProductos();
     void mostrarInventario();
     void caracteristicasProductos();
+    bool existeProducto(const string& SKU) const;
+    void pedirEgreso();
 };
 
 #endif // INTERFAZ_H

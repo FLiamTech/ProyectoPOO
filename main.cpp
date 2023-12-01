@@ -7,6 +7,7 @@ int main()
 {
     Interfaz itz;
     int opcion;
+    system("color A");
     do
     {
         cout << "\n== = == Menu de Inventario == = ==" << endl;
@@ -14,7 +15,8 @@ int main()
         cout << "2. Mostrar Cuadro de Productos" << endl;
         cout << "3. Mostrar Cuadro de Inventario" << endl;
         cout << "4. Caracteristicas de los productos" << endl;
-        cout << "5. Salir" << endl;
+        cout << "5. Egreso de un producto" << endl;
+        cout << "6. Salir" << endl;
         cout << "*******************************" << endl;
         cout << "Ingrese la opcion: ";
         cin >> opcion;
@@ -33,6 +35,9 @@ int main()
             itz.caracteristicasProductos();
             break;
         case 5:
+            itz.pedirEgreso();
+            break;
+        case 6:
             cout << "Gracias por usar el programa..." << endl;
             break;
         default:
@@ -40,6 +45,6 @@ int main()
             break;
         }
 
-    } while (opcion != 5);
+    } while (opcion != 6);
     return 0;
 }

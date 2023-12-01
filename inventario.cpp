@@ -11,27 +11,7 @@ void Inventario::agregarProducto(Modelo* nuevoProducto)
     listaProductos.push_back(nuevoProducto);
 }
 
-void Inventario::eliminarProducto(string SKU)
-{
-    auto it = find_if(listaProductos.begin(), listaProductos.end(),[SKU](Modelo* p) { return p->getSKU() == SKU; });
-    if (it != listaProductos.end())
-    {
-        delete *it;
-        listaProductos.erase(it);
-    }
-}
-
-void Inventario::agregarUnidades(string SKU, int cantidad)
-{
-    auto it = find_if(listaProductos.begin(), listaProductos.end(),
-                      [SKU](Modelo* p) { return p->getSKU() == SKU; });
-
-    if (it != listaProductos.end())
-    {
-        (*it)->setUnidades((*it)->getUnidades() + cantidad);
-    }
-}
-void Inventario::mostrarCuadroDeProductos() const {
+void Inventario::cuadroProductos() const {
     using namespace std;
 
     cout << "Cuadro de Productos:" << endl;
@@ -51,7 +31,7 @@ void Inventario::mostrarCuadroDeProductos() const {
 
 
 
-void Inventario::mostrarCuadroDeInventario() const {
+void Inventario::cuadroInventario() const {
     using namespace std;
 
     cout << "Cuadro de Inventario:" << endl;
@@ -103,5 +83,30 @@ void Inventario::caracteristicasProductos() const {
     for (const auto& producto : listaProductos) {
         producto->imprimir();
         cout << "------------------------" << endl;
+    }
+}
+
+void Inventario::calculoEgreso(const string& SKU, int cantidad)
+{
+    auto it = find_if(listaProductos.begin(), listaProductos.end(), [SKU](Modelo* p) { return p->getSKU() == SKU; });
+
+    if (it != listaProductos.end())
+    {
+        Modelo* producto = *it;
+
+        if (producto->getUnidades() >= cantidad)
+        {
+            producto->setUnidades(producto->getUnidades() - cantidad);
+            cout << "Egreso Exitoso [U]: " << producto->getUnidades() << endl;
+        }
+        else
+        {
+            cout << "Error... Unidades insuficientes" << endl;
+        }
+    }
+    else
+    {
+        cout<<"Error..."<<endl;
+        cout <<SKU<< " no encontrado..." << endl;
     }
 }

@@ -16,14 +16,11 @@ class Inventario : public proSimples, public proVariable
     public:
     Inventario();
     void agregarProducto(Modelo* nuevoProducto);
-    void eliminarProducto(string SKU);
-    void agregarUnidades(string SKU, int cantidad);
     void calcularCosto(string SKU,float costoNuevo, int unidadNueva);
     void mostrarDatosDelProducto(string SKU) const;
-    void mostrarCuadroDeProductos() const;
-    void mostrarCuadroDeInventario() const;
-    void ingresoDeInventario(string SKU, int cantidad);
-    void egresoDeInventario(string SKU, int cantidad);
+    void cuadroProductos() const;
+    void cuadroInventario() const;
+    void calculoEgreso(const string& SKU, int cantidad);
     void caracteristicasProductos() const;
 };
 

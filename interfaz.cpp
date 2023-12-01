@@ -10,18 +10,15 @@ void Interfaz::agregarProducto()
     string SKU, nombre, descripcion, edicion;
     float precioVenta, costoCompra;
     int unidades, numVariaciones;
-    cout << "1. Nuevo. " << endl;
-    cout << "2. Existente. " << endl;
+    cout << "1. Nuevo " << endl;
+    cout << "2. Existente " << endl;
     cout << "Opcion: ";
     cin>>op;
-
-    cin.clear();
-
     switch (op)
     {
     case 1:
-        cout<<"1. Producto simple."<<endl;
-        cout<<"2. Producto variado."<<endl;
+        cout<<"1. Producto simple"<<endl;
+        cout<<"2. Producto variado"<<endl;
         cout << "Opcion: ";
         cin>>op1;
         cin.clear();
@@ -50,8 +47,7 @@ void Interfaz::agregarProducto()
             cout << "Producto Simple agregado al inventario." << endl;
             break;
         }
-        case 2:{
-            // Producto Variable
+        case 2:
             cout << "Numero de Variaciones: ";
             cin >> numVariaciones;
 
@@ -60,7 +56,6 @@ void Interfaz::agregarProducto()
 
                 cout << "Edicion: ";
                 getline(cin>>ws, edicion);
-                // Solicitar detalles al usuario
                 cout << "SKU: ";
                 cin >> SKU;
 
@@ -84,35 +79,52 @@ void Interfaz::agregarProducto()
             }
             break;
         }
-        }
+
         break;
     case 2:
-        float  costoUnitarioNuevo;
-        int unidadesNuevas;
+        float  newCosto;
+        int newUnidad;
         string SKU;
         cout << "SKU del producto: ";
         cin >> SKU;
         cout << "Unidades: ";
-        cin >> unidadesNuevas;
+        cin >> newUnidad;
         cout << "Costo de las nuevas unidades: ";
-        cin >> costoUnitarioNuevo;
-        inventario.calcularCosto(SKU, costoUnitarioNuevo, unidadesNuevas);
-        cout << "Costo de compra y precio de venta manipulados correctamete"<<endl;
-
+        cin >> newCosto;
+        inventario.calcularCosto(SKU, newCosto, newUnidad);
+        cout << "Costo del producto agregado correctamente..."<<endl;
         break;
     }
 }
 
 void Interfaz::mostrarProductos()
 {
-    inventario.mostrarCuadroDeProductos();
+    inventario.cuadroProductos();
 }
 
 void Interfaz::mostrarInventario()
 {
-    inventario.mostrarCuadroDeInventario();
+    inventario.cuadroInventario();
 }
 
 void Interfaz::caracteristicasProductos() {
     inventario.caracteristicasProductos();
+}
+
+void Interfaz::pedirEgreso()
+{
+    string sku;
+    int unidades;
+    cout<<"SKU: ";
+    cin>>sku;
+    cout<<"Cantidad: ";
+    do
+    {
+        cin>>unidades;
+        if(unidades < 0)
+        {
+            cout<<"Error... Numero negativo"<<endl;
+        }
+    }while(unidades < 0);
+    inventario.calculoEgreso(sku, unidades);
 }

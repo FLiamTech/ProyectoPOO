@@ -12,7 +12,6 @@ void proSimples::imprimir() const
     cout << "Nombre: " << getNombre() << endl;
     cout << "Descripcion: " << getDescripcion() << endl;
     cout << "Precio de Venta: " << getPrecioVenta() << endl;
-    cout << "Costo de Compra: " << getCostoCompra() << endl;
     cout << "Unidades: " << getUnidades() << endl;
 }
 
