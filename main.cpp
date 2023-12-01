@@ -1,33 +1,41 @@
 #include <iostream>
-//#include "modelo.h"
-//#include "proSimples.h"
-//#include "provariable.h"
 #include "interfaz.h"
+
 using namespace std;
-int main() {
-    // Crear un objeto de tipo Modelo
-    /*Modelo model;
-    string descipcion;
-    model.setSKU("AB1324");
-    model.setNombre("Celular");
-    cout<<"Decripcion: ";
-    getline(cin>>ws, descipcion);
-    model.setDescripcion(descipcion);
-    model.setPrecioVenta(5000);
-    model.setPrecioCompra(4000);
-    cout<<model.imprimir(false);
-    */
 
-    // Crear un objeto de tipo Producto Simple
-    /*proSimples PS("SK1231", "Pilsener", "100% Ecuador", 420, 320);
-    PS.ingresoPSimple();
-    PS.imprimir();
+int main()
+{
+    Interfaz itz;
+    int opcion;
+    do
+    {
+        cout << "\n== = == Menu de Inventario == = ==" << endl;
+        cout << "1. Agregar Producto" << endl;
+        cout << "2. Mostrar Cuadro de Productos" << endl;
+        cout << "3. Mostrar Cuadro de Inventario" << endl;
+        cout << "4. Salir" << endl;
+        cout << "*******************************" << endl;
+        cout << "Ingrese la opcion: ";
+        cin >> opcion;
+        switch (opcion) {
+        case 1:
+            itz.agregarProducto();
+            system("cls");
+            break;
+        case 2:
+            itz.mostrarProductos();
+            break;
+        case 3:
+            itz.mostrarInventario();
+            break;
+        case 4:
+            cout << "Gracias por usar el programa..." << endl;
+            break;
+        default:
+            cout << "Opcion no valida, ingrese de nuevo..." << endl;
+            break;
+        }
 
-    // Crea un objeto de tipo Producto Variable
-    proVariable PV("SK1231", "Jack Daniels", "Wisky", 120, 20, 3);
-    PV.ingresoPVariables();
-    PV.imprimir();*/
-    cout<<"a";
-
+    } while (opcion != 0);
     return 0;
 }

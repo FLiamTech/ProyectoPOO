@@ -1,68 +1,55 @@
 #include "provariable.h"
-#include <iostream>
+
+
+using namespace std;
 
 proVariable::proVariable()
-{
+{}
 
+proVariable::proVariable(string SKU, string nombre, string descripcion, float precioVenta, float costoCompra, int unidades, int numVariaciones, string edicion)
+    : Modelo(SKU, nombre, descripcion, precioVenta, costoCompra, unidades),
+    numVariaciones(numVariaciones),
+    edicion(edicion) {}
+
+int proVariable::getNumVariaciones() const
+{
+    return numVariaciones;
 }
 
-proVariable::proVariable(string SKU, string nombre, string descripcion, float precioVenta, float precioCompra, int numVariacion, int unidades) :
-    Modelo(SKU, nombre, descripcion, precioVenta, precioCompra, unidades), numVariacion(numVariacion)
+void proVariable::setNumVariaciones(int numVariaciones)
 {
-
+    this->numVariaciones = numVariaciones;
 }
 
-void proVariable::ingresoPVariables()
+string proVariable::getEdicion() const
 {
-    string SKU;
-    string nombre;
-    string descripcion;
-    float precioVenta;
-    float precioCompra;
-    int numeroVariaciones;
-    int unidades;
-    cout<<"Ingrese el SKU: ";
-    cin>>SKU;
-    cout<<"Ingrese el nombre: ";
-    cin>>nombre;
-    cout<<"Ingrese la descripcion: ";
-    getline(cin >> ws, descripcion);
-    cout<<"Ingrese el precio de venta: ";
-    cin>>precioVenta;
-    cout<<"Ingrese el precio de compra: ";
-    cin>>precioCompra;
-    cout<<"Numero de variaciones: ";
-    cin>>numeroVariaciones;
-    cout<<"Unidades: ";
-    cin>>unidades;
-    setSKU(SKU);
-    setNombre(nombre);
-    setDescripcion(descripcion);
-    setPrecioVenta(precioVenta);
-    setPrecioCompra(precioCompra);
-    setUnidades(unidades);
-    Modelo *nuevoProducto = new Modelo(SKU, nombre, descripcion, precioVenta, precioCompra, unidades);
-    productos.push_back(nuevoProducto);
-    string edicion;
-    float nuevoCosto;
-    float nuevoPrecio;
-    for(int i=1; i<numVariacion; i++)
+    return edicion;
+}
+
+void proVariable::setEdicion(string edicion)
+{
+    this->edicion = edicion;
+}
+
+void proVariable::agregarEdicion(string edicion, float precio, float costo)
+{
+    Edicion.emplace_back(edicion, precio, costo);
+}
+
+void proVariable::mostrarEdicion() const
+{
+    for (const auto &edicion : Edicion)
     {
-        cout<<"Edicion "<<i+1<<": ";
-        getline(cin>>ws, edicion);
-        cout<<"Ingrese el costo: ";
-        cin>>nuevoCosto;
-        cout<<"Ingrese el precio: ";
-        cin>>nuevoPrecio;
-        nuevoProducto->agregarEdicion(edicion, nuevoCosto, nuevoPrecio);
+        cout << "edicion: " << edicion.edicion << ", Precio: " << edicion.precio << ", Costo: " << edicion.costo << endl;
     }
 }
 
-void proVariable::imprimir()
-{
-    for (int i = 0; i < productos.size(); i++)
-    {
-        cout << productos[i]->imprimir(true) << endl;
-    }
+void proVariable::imprimir() const{
+    cout << "SKU: " << getSKU() << endl;
+    cout << "Nombre: " << getNombre() << endl;
+    cout << "Descripcion: " << getDescripcion() << endl;
+    cout << "Precio de Venta: " << getPrecioVenta() << endl;
+    cout << "Costo de Compra: " << getCostoCompra() << endl;
+    cout << "Unidades: " << getUnidades() << endl;
+    cout << "Edicion: " << getEdicion() << endl;
 }
-
