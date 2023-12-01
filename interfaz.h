@@ -11,6 +11,7 @@ public:
     void agregarProducto();
     void mostrarProductos();
     void mostrarInventario();
+    void caracteristicasProductos();
 };
 
 #endif // INTERFAZ_H

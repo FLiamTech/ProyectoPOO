@@ -13,7 +13,8 @@ int main()
         cout << "1. Agregar Producto" << endl;
         cout << "2. Mostrar Cuadro de Productos" << endl;
         cout << "3. Mostrar Cuadro de Inventario" << endl;
-        cout << "4. Salir" << endl;
+        cout << "4. Caracteristicas de los productos" << endl;
+        cout << "5. Salir" << endl;
         cout << "*******************************" << endl;
         cout << "Ingrese la opcion: ";
         cin >> opcion;
@@ -29,6 +30,9 @@ int main()
             itz.mostrarInventario();
             break;
         case 4:
+            itz.caracteristicasProductos();
+            break;
+        case 5:
             cout << "Gracias por usar el programa..." << endl;
             break;
         default:
@@ -36,6 +40,6 @@ int main()
             break;
         }
 
-    } while (opcion != 0);
+    } while (opcion != 5);
     return 0;
 }

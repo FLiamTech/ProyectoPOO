@@ -24,6 +24,7 @@ class Inventario : public proSimples, public proVariable
     void mostrarCuadroDeInventario() const;
     void ingresoDeInventario(string SKU, int cantidad);
     void egresoDeInventario(string SKU, int cantidad);
+    void caracteristicasProductos() const;
 };
 
 #endif // INVENTARIO_H

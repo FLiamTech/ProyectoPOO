@@ -113,4 +113,6 @@ void Interfaz::mostrarInventario()
     inventario.mostrarCuadroDeInventario();
 }
 
-
+void Interfaz::caracteristicasProductos() {
+    inventario.caracteristicasProductos();
+}

@@ -31,34 +31,42 @@ void Inventario::agregarUnidades(string SKU, int cantidad)
         (*it)->setUnidades((*it)->getUnidades() + cantidad);
     }
 }
-void Inventario::mostrarCuadroDeProductos() const
-{
+void Inventario::mostrarCuadroDeProductos() const {
     using namespace std;
-    cout << "Cuadro de Productos:" << endl;
-    cout << left << setw(30) << "| Nombre" << setw(15) << "| SKU" << setw(15) << "| Unidades" << setw(20) << "| Precio V.P." << "|" << endl;
-    cout << setw(30) << setfill('-') << "|" << setw(15) << "|" << setw(15) << "|" << setw(20) << "|" << setfill(' ') << endl;
 
-    for (const auto &producto : listaProductos)
-    {
-        cout << setw(30) << "| " + producto->getNombre() << setw(15) << "| " + producto->getSKU() << setw(15) << "| " + to_string(producto->getUnidades())
-             << setw(5) << "| " << fixed << setprecision(2) << producto->getPrecioVenta() << "$" <<setw(5)<< "|" <<setw(5)<< endl;
+    cout << "Cuadro de Productos:" << endl;
+    cout << "+----------------------+---------------+-------------+--------------------+" << endl;
+    cout << "| SKU                  | Nombre        | Existencias | Precio de Venta    |" << endl;
+    cout << "+----------------------+---------------+-------------+--------------------+" << endl;
+
+    for (const auto &producto : listaProductos) {
+        cout << "| " << left << setw(20) << producto->getSKU() << " | "
+             << left << setw(13) << producto->getNombre() << " | "
+             << right << setw(12) << producto->getUnidades() << " | "
+             << right << fixed << setprecision(2) << setw(18) << producto->getPrecioVenta() << "$ |" << endl;
     }
-    cout << setw(30) << setfill('-') << "|" << setw(15) << "|" << setw(15) << "|" << setw(20) << "|" <<setw(5)<< setfill(' ') << endl;
+
+    cout << "+----------------------+---------------+-------------+--------------------+" << endl;
 }
 
-void Inventario::mostrarCuadroDeInventario() const
-{
-    using namespace std;
-    cout << "Cuadro de Inventario:" << endl;
-    cout << left << setw(30) << "| Nombre" << setw(15) << "| SKU" << setw(15) << "| Unidades" << setw(20) << "| Costo V.T." << "|" << endl;
-    cout << setw(30) << setfill('-') << "|" << setw(15) << "|" << setw(15) << "|" << setw(20) << "|" << setfill(' ') << endl;
 
-    for (const auto &producto : listaProductos)
-    {
-        cout << setw(30) << "| " + producto->getNombre() << setw(15) << "| " + producto->getSKU() << setw(15) << "| " + to_string(producto->getUnidades())
-             << setw(20) << "| " << fixed << setprecision(2) << producto->getCostoCompra() << "$" << "|" << endl;
+
+void Inventario::mostrarCuadroDeInventario() const {
+    using namespace std;
+
+    cout << "Cuadro de Inventario:" << endl;
+    cout << "+---------------+---------------+----------------+----------------------+" << endl;
+    cout << "| SKU           | Costo         | Existencias    | Subtotal             |" << endl;
+    cout << "+---------------+---------------+----------------+----------------------+" << endl;
+
+    for (const auto &producto : listaProductos) {
+        cout << "| " << left << setw(14) << producto->getSKU() << " | "
+             << right << setw(13) << fixed << setprecision(2) << producto->getCostoCompra() << "$ | "
+             << right << setw(13) << producto->getUnidades() << " | "
+             << right << setw(20) << producto->getCostoCompra() * producto->getUnidades() << "$ |" << endl;
     }
-    cout << setw(30) << setfill('-') << "|" << setw(15) << "|" << setw(15) << "|" << setw(20) << "|" << setfill(' ') << endl;
+
+    cout << "+---------------+---------------+----------------+----------------------+" << endl;
 }
 void Inventario::calcularCosto(string SKU,float costoNuevo, int unidadNueva)
 {
@@ -87,5 +95,13 @@ void Inventario::calcularCosto(string SKU,float costoNuevo, int unidadNueva)
         }
 
         return;
+    }
+}
+
+void Inventario::caracteristicasProductos() const {
+    cout << "Cuadro de Productos:" << endl;
+    for (const auto& producto : listaProductos) {
+        producto->imprimir();
+        cout << "------------------------" << endl;
     }
 }

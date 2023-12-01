@@ -6,7 +6,6 @@ proSimples::proSimples(string SKU, string nombre, string descripcion, float prec
     : Modelo(SKU, nombre, descripcion, precioVenta, costoCompra, unidades)
 {}
 
-
 void proSimples::imprimir() const
 {
     cout << "SKU: " << getSKU() << endl;
