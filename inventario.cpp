@@ -57,10 +57,10 @@ void Inventario::calcularCosto(string SKU,float costoNuevo, int unidadNueva)
         float nuevoCostoMedio;
         nuevoCostoMedio = ((producto->getCostoCompra() * producto->getUnidades()) +(costoNuevo * unidadNueva)) /( producto->getUnidades() + unidadNueva);
         float nuevoPrecioDeVenta = nuevoCostoMedio + nuevoCostoMedio*0.25;
-        cout << "Nuevo precio de venta recomendado: " << nuevoPrecioDeVenta << endl;
-        cout << "Nueva media del costo de compra: " << nuevoCostoMedio << endl;
+        cout << "Nuevo precio de venta: " << nuevoPrecioDeVenta << endl;
+        cout << "Costo de compra: " << nuevoCostoMedio << endl;
         bool confirmacion=false;
-        cout << "Confirmar cambios[1 - 2]: \n";
+        cout << "Confirmar cambios[1 - 0]: \n";
         cout<<"[Si - No]: ";
         cin >> confirmacion;
         if(confirmacion)

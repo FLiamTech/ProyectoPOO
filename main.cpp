@@ -60,6 +60,7 @@ int main()
             break;
         case 6:
             cout << "Gracias por usar el programa..." << endl;
+            cout << "***Proyecto Parcial 1***" << endl;
             cout << "= == Integrantes == =" << endl;
             cout << "1. Ariel Flores" << endl;
             cout << "2. Mayerli Campuez" << endl;
